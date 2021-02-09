@@ -1,0 +1,425 @@
+Index: Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package GUI;\r\n\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\n\r\nimport javax.swing.*;\r\nimport javax.swing.border.EmptyBorder;\r\n\r\nimport GUI.gameFrame;\r\n\r\n\r\npublic class Main \r\n{\r\n\tprivate JFrame frame;\r\n\tprivate JFrame gameFr;\r\n\tprivate JPanel mainPanel;\r\n\tprivate JPanel mainPanel2;\r\n\tprivate JButton b1;\r\n\tprivate JButton b2;\r\n\tprivate JLabel gameLabel;\r\n\tgameFrame f = new gameFrame();\r\n\r\n\t\r\n\tpublic Main() {\r\n\t\tgui();\t\r\n\t}\r\n\t\r\n\tpublic void gui() {\r\n\t\t\r\n\t\t//Creating frame\r\n        JFrame.setDefaultLookAndFeelDecorated(true);\r\n        frame = new JFrame(\"Version 1.0\");\r\n        gameFr = new JFrame(\"Version 1.0\");\r\n        frame.setVisible(true);\r\n        //frame.setSize(600, 400);//setting size of frame 600 width and 400 height.\r\n\t\tframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Allows frame to exit, without it frame will not close\r\n         \r\n\t\t//Creating Panel\r\n\t\tmainPanel = new JPanel();\r\n\t\tmainPanel.setBackground(Color.BLACK);//setting background of JPanel to be black \r\n        BoxLayout boxlayout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);//Setting Boxlayout for Jpanel\r\n        mainPanel.setLayout(boxlayout);//BoxLayout.Y_AXIS adds panel components from top to bottom \r\n        mainPanel.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));//Set border for the panel\r\n        \r\n        //Creating Label that will contain Game title and adding it to our JPanel\r\n        gameLabel = new JLabel(\"AMONG US\");\r\n\t\tgameLabel.setForeground(Color.RED);//setting color of label text to Red\r\n\t\tgameLabel.setFont(new Font(\"Phosphate\", Font.BOLD, 42));//setting font type and size for label\r\n\t\tmainPanel.add(gameLabel);\r\n\t\tmainPanel.add(Box.createRigidArea(new Dimension(0, 40)));//(width,height); used to insert spacing between the 2 components of 40pixels\r\n\t\t\r\n\t\t//Creating Button components to be placed on JPanel \r\n        b1 = new JButton(\"Online\");\r\n        b2 = new JButton(\"How To Play\"); \r\n        mainPanel.add(b1);\r\n        mainPanel.add(b2);\r\n        \r\n        \r\n        \r\n      //Creating Panel for game window\r\n    \tgameFr.add(f);\r\n    \tgameFr.setSize(800,600);\r\n      \t//mainPanel2 = new JPanel();\r\n      \t//mainPanel2.setBackground(Color.WHITE);//setting background of JPanel to be black \r\n        //BoxLayout boxlayout2 = new BoxLayout(mainPanel2, BoxLayout.Y_AXIS);//Setting Boxlayout for Jpanel\r\n        //mainPanel2.setLayout(boxlayout2);//BoxLayout.Y_AXIS adds panel components from top to bottom \r\n        //Set border for the panel\r\n        //mainPanel2.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));\r\n        //mainPanel.setBorder(new EmptyBorder(new Insets(50, 80, 50, 80)));     \r\n        //gameFr.add(mainPanel2);\r\n        //gameFr.pack();\r\n            \r\n        \r\n        //Implementing action listener for \"Online\" button\r\n        b1.addActionListener(new java.awt.event.ActionListener(){\r\n\t\t\t@Override\r\n\t\t\tpublic void actionPerformed(ActionEvent e) {\r\n\t\t\t\t// TODO Auto-generated method stub\r\n\t\t\t\tgameFr.setVisible(true);\t\t\r\n\t\t\t} \t\r\n        });\r\n        \r\n      //Implementing action listener for \"How To Play\" button\r\n        b2.addActionListener(new java.awt.event.ActionListener(){\r\n\t\t\t@Override\r\n\t\t\tpublic void actionPerformed(ActionEvent e) {\r\n\t\t\t\t// TODO Auto-generated method stub\r\n\t\t\t\t//pop up how to play frame\r\n\t\t\t\tJFrame howToPlay = new JFrame(\"How To Play\");\r\n\t\t\t\thowToPlay.setVisible(true);\r\n\t\t\t\thowToPlay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n\t\t\t\t\r\n\t\t\t\t//creating jpanel\r\n\t\t\t\tJPanel howP = new JPanel();\r\n\t\t\t\thowP.setBackground(Color.BLACK);//setting background of JPanel to be black \r\n\t\t        BoxLayout boxlayout = new BoxLayout(howP, BoxLayout.Y_AXIS);//Setting Boxlayout for Jpanel\r\n\t\t        howP.setLayout(boxlayout);//BoxLayout.Y_AXIS adds panel components from top to bottom \r\n\t\t\t\t\r\n\t\t        //Creating Labels containing rules and adding them to our JPanel\r\n\t\t        /*Label*/\r\n\t\t        JLabel label = new JLabel(\"RULES\");\r\n\t\t\t\tlabel.setForeground(Color.RED);\r\n\t\t\t\tlabel.setFont(new Font(\"Comic Sans MS\", Font.BOLD, 24));\r\n\t\t\t\thowP.add(label);//add to panel\r\n\t\t\t\thowP.add(Box.createRigidArea(new Dimension(0, 20)));\r\n\t\t\t\t/*rule1*/\r\n\t\t\t\tJLabel rule1 = new JLabel(\"1. This is a game of collbaration and deception. Players are either given the role of a crew member or imposter.\");\r\n\t\t\t\trule1.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule1);//add to panel\r\n\t\t\t\t/*rule2*/\r\n\t\t\t\tJLabel rule2 = new JLabel(\"2. The job of a crew member is to complete tasks given to them, while also trying to locate the imposter among them.\");\r\n\t\t\t\trule2.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule2);//add to panel\r\n\t\t\t\t/*rule3*/\r\n\t\t\t\tJLabel rule3 = new JLabel(\"3. Crew members can initiate the voting off sequence by reporting dead bodies or calling emergency meeting if they believe they found the imposter.\");\r\n\t\t\t\trule3.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule3);//add to panel\r\n\t\t\t\t/*rule4*/\r\n\t\t\t\tJLabel rule4 = new JLabel(\"4. The imposter's job is to sabotage and kill off the crewmates while avoiding getting spotted.\");\r\n\t\t\t\trule4.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule4);//add to panel\r\n\t\t\t\t/*rule5*/\r\n\t\t\t\tJLabel rule5 = new JLabel(\"5. As imposter, you must manipulate the crew members. Make them fight among themselves and elminate eachother.\");\r\n\t\t\t\trule5.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule5);//add to panel\r\n\t\t\t\t/*rule6*/\r\n\t\t\t\tJLabel rule6 = new JLabel(\"6. To move around use the W,A,S,D keys.\");\r\n\t\t\t\trule6.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule6);//add to panel\r\n\t\t\t\t/*rule7*/\r\n\t\t\t\tJLabel rule7 = new JLabel(\"7. The N key will be used as the action button. For imposters, it will allow them to kill crew members. For crew members, it will allow them to complete tasks.\");\r\n\t\t\t\trule7.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule7);//add to panel\r\n\t\t\t\t/*rule8*/\r\n\t\t\t\tJLabel rule8 = new JLabel(\"8. The M key will be used as the report button. Crew mates can use this button to report a dead body spotted or the imposter can self report a dead body to initiate voting\");\r\n\t\t\t\trule8.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule8);//add to panel\r\n\t\t\t\t/*rule9*/\r\n\t\t\t\tJLabel rule9 = new JLabel(\"9. If a player is killed by the imposter, they will not be allowed to speak until the game ends. Only players still alive can discuss on who the imposter may be.\");\r\n\t\t\t\trule9.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule9);//add to panel\r\n\t\t\t\t/*rule10*/\r\n\t\t\t\tJLabel rule10 = new JLabel(\"10. After discussions are over, players get chance to vote who they believe is the imposter or skip vote. Whoever gets majority votes will be removed off the ship, so vote intelligently!\");\r\n\t\t\t\trule10.setForeground(Color.WHITE);\r\n\t\t\t\thowP.add(rule10);//add to panel\r\n\t\t\t\thowP.add(Box.createRigidArea(new Dimension(0, 40)));//(width,height); used to insert spacing between the 2 components of 40pixels\r\n\t\t\t\t\r\n\t\t\t\t//Adding panel with components to frame\r\n\t\t\t\thowToPlay.add(howP);\r\n\t\t\t\thowToPlay.pack();\t\t\r\n\t\t\t} \r\n\t\t\t\r\n        });\r\n       \r\n        \r\n\t\t//Adding panel with components to frame\r\n\t\tframe.add(mainPanel);\r\n\t\tframe.pack();//automatically sizes frame with all its contents to be at an appropriate size if frame.setSize is not used\r\n\t\r\n\t}\r\n\t\r\n\tpublic static void main(String[] args) { \r\n\t\tnew Main();\r\n\t\t\r\n\t}\r\n\t\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Main.java	(revision a9f255089462a37c4757263374246c71bbe2f32b)
++++ Main.java	(date 1602112163478)
+@@ -1,15 +1,17 @@
+ package GUI;
+ 
+-import java.awt.*;
+-import java.awt.event.ActionEvent;
++import Game.Game;
++import Game.Player;
++import Game.PlayerList;
++import static Game.PlayerList.player_list;
+ 
+ import javax.swing.*;
+ import javax.swing.border.EmptyBorder;
+-
+-import GUI.gameFrame;
++import java.awt.*;
++import java.awt.event.ActionEvent;
+ 
+ 
+-public class Main 
++public class Main
+ {
+ 	private JFrame frame;
+ 	private JFrame gameFr;
+@@ -20,68 +22,69 @@
+ 	private JLabel gameLabel;
+ 	gameFrame f = new gameFrame();
+ 
+-	
++
++
+ 	public Main() {
+-		gui();	
++		gui();
+ 	}
+-	
++
+ 	public void gui() {
+-		
++
+ 		//Creating frame
+-        JFrame.setDefaultLookAndFeelDecorated(true);
+-        frame = new JFrame("Version 1.0");
+-        gameFr = new JFrame("Version 1.0");
+-        frame.setVisible(true);
+-        //frame.setSize(600, 400);//setting size of frame 600 width and 400 height.
++		JFrame.setDefaultLookAndFeelDecorated(true);
++		frame = new JFrame("Version 1.0");
++		gameFr = new JFrame("Version 1.0");
++		frame.setVisible(true);
++		//frame.setSize(600, 400);//setting size of frame 600 width and 400 height.
+ 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Allows frame to exit, without it frame will not close
+-         
++
+ 		//Creating Panel
+ 		mainPanel = new JPanel();
+-		mainPanel.setBackground(Color.BLACK);//setting background of JPanel to be black 
+-        BoxLayout boxlayout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);//Setting Boxlayout for Jpanel
+-        mainPanel.setLayout(boxlayout);//BoxLayout.Y_AXIS adds panel components from top to bottom 
+-        mainPanel.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));//Set border for the panel
+-        
+-        //Creating Label that will contain Game title and adding it to our JPanel
+-        gameLabel = new JLabel("AMONG US");
++		mainPanel.setBackground(Color.BLACK);//setting background of JPanel to be black
++		BoxLayout boxlayout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);//Setting Boxlayout for Jpanel
++		mainPanel.setLayout(boxlayout);//BoxLayout.Y_AXIS adds panel components from top to bottom
++		mainPanel.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));//Set border for the panel
++
++		//Creating Label that will contain Game title and adding it to our JPanel
++		gameLabel = new JLabel("AMONG US");
+ 		gameLabel.setForeground(Color.RED);//setting color of label text to Red
+ 		gameLabel.setFont(new Font("Phosphate", Font.BOLD, 42));//setting font type and size for label
+ 		mainPanel.add(gameLabel);
+ 		mainPanel.add(Box.createRigidArea(new Dimension(0, 40)));//(width,height); used to insert spacing between the 2 components of 40pixels
+-		
+-		//Creating Button components to be placed on JPanel 
+-        b1 = new JButton("Online");
+-        b2 = new JButton("How To Play"); 
+-        mainPanel.add(b1);
+-        mainPanel.add(b2);
+-        
+-        
+-        
+-      //Creating Panel for game window
+-    	gameFr.add(f);
+-    	gameFr.setSize(800,600);
+-      	//mainPanel2 = new JPanel();
+-      	//mainPanel2.setBackground(Color.WHITE);//setting background of JPanel to be black 
+-        //BoxLayout boxlayout2 = new BoxLayout(mainPanel2, BoxLayout.Y_AXIS);//Setting Boxlayout for Jpanel
+-        //mainPanel2.setLayout(boxlayout2);//BoxLayout.Y_AXIS adds panel components from top to bottom 
+-        //Set border for the panel
+-        //mainPanel2.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));
+-        //mainPanel.setBorder(new EmptyBorder(new Insets(50, 80, 50, 80)));     
+-        //gameFr.add(mainPanel2);
+-        //gameFr.pack();
+-            
+-        
+-        //Implementing action listener for "Online" button
+-        b1.addActionListener(new java.awt.event.ActionListener(){
++
++		//Creating Button components to be placed on JPanel
++		b1 = new JButton("Online");
++		b2 = new JButton("How To Play");
++		mainPanel.add(b1);
++		mainPanel.add(b2);
++
++
++
++		//Creating Panel for game window
++		gameFr.add(f);
++		gameFr.setSize(800,600);
++		//mainPanel2 = new JPanel();
++		//mainPanel2.setBackground(Color.WHITE);//setting background of JPanel to be black
++		//BoxLayout boxlayout2 = new BoxLayout(mainPanel2, BoxLayout.Y_AXIS);//Setting Boxlayout for Jpanel
++		//mainPanel2.setLayout(boxlayout2);//BoxLayout.Y_AXIS adds panel components from top to bottom
++		//Set border for the panel
++		//mainPanel2.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));
++		//mainPanel.setBorder(new EmptyBorder(new Insets(50, 80, 50, 80)));
++		//gameFr.add(mainPanel2);
++		//gameFr.pack();
++
++
++		//Implementing action listener for "Online" button
++		b1.addActionListener(new java.awt.event.ActionListener(){
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				// TODO Auto-generated method stub
+-				gameFr.setVisible(true);		
+-			} 	
+-        });
+-        
+-      //Implementing action listener for "How To Play" button
+-        b2.addActionListener(new java.awt.event.ActionListener(){
++				gameFr.setVisible(true);
++			}
++		});
++
++		//Implementing action listener for "How To Play" button
++		b2.addActionListener(new java.awt.event.ActionListener(){
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				// TODO Auto-generated method stub
+@@ -89,16 +92,16 @@
+ 				JFrame howToPlay = new JFrame("How To Play");
+ 				howToPlay.setVisible(true);
+ 				howToPlay.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+-				
++
+ 				//creating jpanel
+ 				JPanel howP = new JPanel();
+-				howP.setBackground(Color.BLACK);//setting background of JPanel to be black 
+-		        BoxLayout boxlayout = new BoxLayout(howP, BoxLayout.Y_AXIS);//Setting Boxlayout for Jpanel
+-		        howP.setLayout(boxlayout);//BoxLayout.Y_AXIS adds panel components from top to bottom 
+-				
+-		        //Creating Labels containing rules and adding them to our JPanel
+-		        /*Label*/
+-		        JLabel label = new JLabel("RULES");
++				howP.setBackground(Color.BLACK);//setting background of JPanel to be black
++				BoxLayout boxlayout = new BoxLayout(howP, BoxLayout.Y_AXIS);//Setting Boxlayout for Jpanel
++				howP.setLayout(boxlayout);//BoxLayout.Y_AXIS adds panel components from top to bottom
++
++				//Creating Labels containing rules and adding them to our JPanel
++				/*Label*/
++				JLabel label = new JLabel("RULES");
+ 				label.setForeground(Color.RED);
+ 				label.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+ 				howP.add(label);//add to panel
+@@ -144,24 +147,71 @@
+ 				rule10.setForeground(Color.WHITE);
+ 				howP.add(rule10);//add to panel
+ 				howP.add(Box.createRigidArea(new Dimension(0, 40)));//(width,height); used to insert spacing between the 2 components of 40pixels
+-				
++
+ 				//Adding panel with components to frame
+ 				howToPlay.add(howP);
+-				howToPlay.pack();		
+-			} 
+-			
+-        });
+-       
+-        
++				howToPlay.pack();
++			}
++
++		});
++
++
+ 		//Adding panel with components to frame
+ 		frame.add(mainPanel);
+ 		frame.pack();//automatically sizes frame with all its contents to be at an appropriate size if frame.setSize is not used
+-	
++
+ 	}
+-	
+-	public static void main(String[] args) { 
++
++	//adds new player with the players username and adds the player to the player_list
++	public static void new_player(String username){
++		Player player = new Player();
++		player.username = username;
++		PlayerList.add_player(player);
++
++	}
++	//changes the status of an alive player to dead. If the player who died was an impostor, crewmates win.
++	public static void playerDead(String username){
++		int number_of_players = player_list.size();
++		for (int i = 0; i < number_of_players; i++){
++			if(player_list.get(i).username == username){
++				player_list.get(i).status = "dead";
++
++				if(player_list.get(i).role == "impostor"){
++					crewmate_win();
++				}
++
++			}
++		}
++		checkDeathWin();
++
++	}
++
++	//checks how many crewmates are alive and if there is only one, impostor wins
++	private static void checkDeathWin() {
++		int number_of_players = player_list.size();
++		int alive_crewmates = 0;
++		for (int i = 0; i < number_of_players; i++){
++			if(player_list.get(i).status == "alive" && player_list.get(i).role == "crewmate"){
++				alive_crewmates = alive_crewmates + 1;
++			}
++		}
++
++		if (alive_crewmates == 1){
++			impostor_win();
++		}
++	}
++
++	private static void impostor_win() {
++		System.out.println("Impostors Win");
++	}
++
++	private static void crewmate_win(){
++		System.out.println("Crewmates Win");
++	}
++
++	public static void main(String[] args) {
+ 		new Main();
+-		
++
+ 	}
+-	
++
+ }
+\ No newline at end of file
+Index: out/production/course-project-a5-ezpz/Game/Game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Game;\r\n\r\nimport java.util.Collections;\r\n\r\nimport static Game.PlayerList.player_list;\r\n\r\npublic class Game {\r\n    public Game(){\r\n        chooseRoles();\r\n    }\r\n\r\n    //assigns impostor randomly to one player and makes every other player a crewmate\r\n    void chooseRoles (){\r\n        int number_of_players = player_list.size();\r\n        Collections.shuffle(player_list);\r\n        for (int i = 0; i < number_of_players; i++){\r\n            if (i == 0){\r\n                player_list.get(0).role = \"impostor\";\r\n            }\r\n            else{\r\n                player_list.get(i).role = \"crewmate\";\r\n            }\r\n        }\r\n    }\r\n\r\n    //changes the status of an alive player to dead. If the player who died was an impostor, crewmates win.\r\n    void playerDead (String username){\r\n        int number_of_players = player_list.size();\r\n        for (int i = 0; i < number_of_players; i++){\r\n            if(player_list.get(i).username == username){\r\n                player_list.get(i).status = \"dead\";\r\n\r\n                if(player_list.get(i).role == \"impostor\"){\r\n                    crewmate_win();\r\n                }\r\n\r\n            }\r\n        }\r\n        checkDeathWin();\r\n\r\n    }\r\n\r\n    //checks how many crewmates are alive and if there is only one, impostor wins\r\n    private void checkDeathWin() {\r\n        int number_of_players = player_list.size();\r\n        int alive_crewmates = 0;\r\n        for (int i = 0; i < number_of_players; i++){\r\n            if(player_list.get(i).status == \"alive\" && player_list.get(i).role == \"crewmate\"){\r\n                alive_crewmates = alive_crewmates + 1;\r\n            }\r\n        }\r\n\r\n        if (alive_crewmates == 1){\r\n            impostor_win();\r\n        }\r\n    }\r\n\r\n    private void impostor_win() {\r\n        System.out.println(\"Impostors Win\");\r\n    }\r\n\r\n    private void crewmate_win(){\r\n        System.out.println(\"Crewmates Win\");\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- out/production/course-project-a5-ezpz/Game/Game.java	(revision a9f255089462a37c4757263374246c71bbe2f32b)
++++ out/production/course-project-a5-ezpz/Game/Game.java	(date 1602111976214)
+@@ -9,13 +9,15 @@
+         chooseRoles();
+     }
+ 
++
++
+     //assigns impostor randomly to one player and makes every other player a crewmate
+     void chooseRoles (){
+         int number_of_players = player_list.size();
+         Collections.shuffle(player_list);
+         for (int i = 0; i < number_of_players; i++){
+             if (i == 0){
+-                player_list.get(0).role = "impostor";
++                player_list.get(i).role = "impostor";
+             }
+             else{
+                 player_list.get(i).role = "crewmate";
+@@ -23,44 +25,6 @@
+         }
+     }
+ 
+-    //changes the status of an alive player to dead. If the player who died was an impostor, crewmates win.
+-    void playerDead (String username){
+-        int number_of_players = player_list.size();
+-        for (int i = 0; i < number_of_players; i++){
+-            if(player_list.get(i).username == username){
+-                player_list.get(i).status = "dead";
+-
+-                if(player_list.get(i).role == "impostor"){
+-                    crewmate_win();
+-                }
+-
+-            }
+-        }
+-        checkDeathWin();
+-
+-    }
+-
+-    //checks how many crewmates are alive and if there is only one, impostor wins
+-    private void checkDeathWin() {
+-        int number_of_players = player_list.size();
+-        int alive_crewmates = 0;
+-        for (int i = 0; i < number_of_players; i++){
+-            if(player_list.get(i).status == "alive" && player_list.get(i).role == "crewmate"){
+-                alive_crewmates = alive_crewmates + 1;
+-            }
+-        }
+ 
+-        if (alive_crewmates == 1){
+-            impostor_win();
+-        }
+-    }
+-
+-    private void impostor_win() {
+-        System.out.println("Impostors Win");
+-    }
+-
+-    private void crewmate_win(){
+-        System.out.println("Crewmates Win");
+-    }
+ 
+ }
+\ No newline at end of file
+Index: GUI/JUnits.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- GUI/JUnits.java	(date 1602111976197)
++++ GUI/JUnits.java	(date 1602111976197)
+@@ -0,0 +1,62 @@
++package GUI;
++import Game.Game;
++import org.junit.jupiter.api.Test;
++
++import java.util.ArrayList;
++
++import static Game.PlayerList.player_list;
++import static org.junit.jupiter.api.Assertions.assertEquals;
++
++public class JUnits {
++    @Test
++    public void playersAddedToGame() {
++        Main tester = new Main(); // MyClass is tested
++
++        Main.new_player("playerone");
++        Main.new_player("playertwo");
++        Main.new_player("playerthree");
++        Main.new_player("playerfour");
++        Main.new_player("playerfive");
++        Main.new_player("playersix");
++        Main.new_player("playerseven");
++        Main.new_player("playereight");
++        Main.new_player("playernine");
++        Main.new_player("playerten");
++        assertEquals("playerone", player_list.get(0).username);
++        assertEquals("playertwo", player_list.get(1).username);
++        assertEquals("playerseven", player_list.get(6).username);
++        assertEquals("playerten", player_list.get(9).username);
++    }
++
++    @Test
++    public void OneImpostorChosen(){
++        Main tester = new Main(); // MyClass is tested
++
++        Main.new_player("playerone");
++        Main.new_player("playertwo");
++        Main.new_player("playerthree");
++        Main.new_player("playerfour");
++        Main.new_player("playerfive");
++        Main.new_player("playersix");
++        Main.new_player("playerseven");
++        Main.new_player("playereight");
++        Main.new_player("playernine");
++        Main.new_player("playerten");
++        new Game();
++        int impostorCount = 0;
++        int crewmateCount = 0;
++        for (int i = 0; i < player_list.size(); i++){
++            if (player_list.get(i).role == "crewmate"){
++                crewmateCount = crewmateCount + 1;
++            }
++            else if (player_list.get(i).role == "impostor") {
++                impostorCount = impostorCount + 1;
++            }
++        }
++        assertEquals(9, crewmateCount);
++        assertEquals(1, impostorCount);
++    }
++
++
++
++}
+Index: out/production/course-project-a5-ezpz/Game/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Game;\r\n\r\n//player class which holds player characteristics and adds them to list of player\r\npublic class Player {\r\n    String username = null;\r\n    public String role;\r\n    public String status = \"alive\";\r\n    public Player() {\r\n        PlayerList.add_player(this);\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- out/production/course-project-a5-ezpz/Game/Player.java	(revision a9f255089462a37c4757263374246c71bbe2f32b)
++++ out/production/course-project-a5-ezpz/Game/Player.java	(date 1602111976206)
+@@ -2,11 +2,11 @@
+ 
+ //player class which holds player characteristics and adds them to list of player
+ public class Player {
+-    String username = null;
++    public String username = null;
+     public String role;
+     public String status = "alive";
+     public Player() {
+-        PlayerList.add_player(this);
++
+ 
+     }
+ }
